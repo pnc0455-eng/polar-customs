@@ -1,0 +1,6 @@
+[build]
+  publish = "."
+
+[build.environment]
+  SECRETS_SCAN_OMIT_PATHS = "netlify/functions/*"
+  SECRETS_SCAN_OMIT_KEYS = "DISCORD_GUILD_ID,DISCORD_WEBHOOK_URL"
