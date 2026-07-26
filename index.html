@@ -21,11 +21,16 @@
         ::-webkit-scrollbar-thumb { background: #222; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #00FF00; }
         .glass-panel { background: rgba(15, 15, 15, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .modal-enter { animation: modalFadeIn 0.3s ease-out forwards; }
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.95) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
     </style>
 </head>
 <body class="bg-dark text-gray-200 min-h-screen font-sans selection:bg-brand selection:text-black">
     
-    <nav class="border-b border-white/5 bg-black/80 backdrop-blur-xl sticky top-0 z-50">
+    <nav class="border-b border-white/5 bg-black/80 backdrop-blur-xl sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
             <div class="flex items-center gap-3">
                 <div class="w-3 h-3 rounded-full bg-brand animate-pulse shadow-[0_0_10px_#00FF00]"></div>
@@ -124,7 +129,6 @@
                         <div>
                             <label class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-3 mt-4">Extra Unlocks</label>
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <!-- Checkbox items here (same as before) -->
                                 <div class="flex items-center gap-3 bg-black/30 p-4 rounded-xl border border-gray-800 hover:border-gray-500 transition">
                                     <input type="checkbox" id="custom-unlocks" onchange="calculateTotal()" value="15" class="w-5 h-5 accent-brand cursor-pointer custom-addon">
                                     <label for="custom-unlocks" class="text-white font-medium cursor-pointer select-none">Max All Unlocks (+$15)</label>
@@ -163,12 +167,228 @@
                 </div>
             </div>
         </div>
+
+        <!-- PRE-MADE INVENTORY SECTION -->
+        <h3 class="text-3xl font-bold text-white mb-8 border-b border-white/10 pb-4 mt-20">Pre-Made Inventory</h3>
+        
+        <div id="loading" class="flex flex-col items-center justify-center py-20">
+            <div class="w-12 h-12 border-4 border-white/10 border-t-brand rounded-full animate-spin mb-4"></div>
+            <p class="text-brand font-medium tracking-wide text-sm uppercase">Syncing Live Inventory...</p>
+        </div>
+        
+        <div id="offers-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 opacity-0 transition-opacity duration-1000"></div>
+
     </main>
 
+    <!-- THE POP-UP FOR PRE-MADE ACCOUNTS -->
+    <div id="offer-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeModal()"></div>
+        <div class="relative glass-panel rounded-3xl w-full max-w-2xl shadow-2xl overflow-hidden modal-enter flex flex-col md:flex-row border border-brand/20">
+            <button onclick="closeModal()" class="absolute top-3 right-3 z-10 bg-black/60 hover:bg-brand text-gray-300 hover:text-black rounded-full p-2 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </button>
+            <div class="md:w-1/2 h-64 md:h-auto bg-black/50 border-r border-white/5">
+                <img id="modal-image" src="" alt="Account Preview" class="w-full h-full object-cover">
+            </div>
+            <div class="md:w-1/2 p-8 flex flex-col justify-between">
+                <div>
+                    <h2 id="modal-title" class="text-2xl font-bold text-white mb-2 leading-tight">Title</h2>
+                    <div class="text-brand font-black text-3xl mb-6" id="modal-price">$0.00</div>
+                    <h3 class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Account Details</h3>
+                    <p id="modal-desc" class="text-gray-300 text-sm leading-relaxed mb-8 h-32 overflow-y-auto pr-2">Description goes here...</p>
+                </div>
+                <a id="modal-link" href="#" target="_blank" class="flex items-center justify-center gap-2 w-full bg-brand hover:bg-green-400 text-black font-bold py-4 px-4 rounded-xl shadow-glow transition-all hover:scale-105">
+                    Buy via PlayerAuctions
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMPLETE JAVASCRIPT -->
     <script>
-        // Use the exact same JavaScript functions as before for verification and calculating totals.
-        // Just paste your verifyMember(), calculateTotal(), and sendWebhook() functions here!
-        // ...
+        let verifiedUserId = "";
+
+        // 1. Verification Logic
+        async function verifyMember() {
+            const inputId = document.getElementById('verify-discord-id').value.trim();
+            const btn = document.getElementById('verify-btn');
+            const errorMsg = document.getElementById('verify-error');
+            
+            if (!inputId) {
+                errorMsg.innerText = "Please enter a Discord User ID.";
+                errorMsg.classList.remove('hidden');
+                return;
+            }
+
+            btn.innerText = "Checking API...";
+            btn.disabled = true;
+            errorMsg.classList.add('hidden');
+
+            try {
+                const response = await fetch('/.netlify/functions/verify', {
+                    method: 'POST',
+                    body: JSON.stringify({ userId: inputId })
+                });
+
+                const data = await response.json();
+
+                if (data.isMember) {
+                    verifiedUserId = inputId;
+                    document.getElementById('gatekeeper-panel').classList.add('hidden');
+                    document.getElementById('custom-builder-panel').classList.remove('hidden');
+                    calculateTotal();
+                } else {
+                    errorMsg.innerText = "Verification Failed: You are not in the server, or the ID is invalid.";
+                    errorMsg.classList.remove('hidden');
+                    btn.innerText = "Verify ID";
+                    btn.disabled = false;
+                }
+            } catch (error) {
+                errorMsg.innerText = "Error connecting to verification server.";
+                errorMsg.classList.remove('hidden');
+                btn.innerText = "Verify ID";
+                btn.disabled = false;
+            }
+        }
+
+        // 2. Custom Account Calculator
+        function calculateTotal() {
+            const basePrice = 20; 
+            const cashPrice = parseInt(document.getElementById('custom-cash').value) || 0;
+            const levelPrice = parseInt(document.getElementById('custom-level').value) || 0;
+            const beffPrice = parseInt(document.getElementById('custom-beff').value) || 0;
+            
+            let addonsPrice = 0;
+            document.querySelectorAll('.custom-addon:checked').forEach((checkbox) => {
+                addonsPrice += parseInt(checkbox.value);
+            });
+            
+            const total = basePrice + cashPrice + levelPrice + beffPrice + addonsPrice;
+            document.getElementById('custom-total').innerText = '$' + total + '.00';
+        }
+
+        // 3. Send Request to Webhook
+        async function sendWebhook() {
+            const webhookUrl = "https://discord.com/api/webhooks/1529314249657286739/l4erVSTVIpSghj2yQ_Sw8kNgZKti_Mh09HfsQKA2xlQvWFDn63eEkGe5BkAjN1caBzAr"; 
+            
+            const btn = document.getElementById('webhook-btn');
+            btn.innerText = "Sending...";
+            btn.disabled = true;
+
+            const cashDrop = document.getElementById('custom-cash');
+            const levelDrop = document.getElementById('custom-level');
+            const beffDrop = document.getElementById('custom-beff');
+            
+            const cashText = cashDrop.options[cashDrop.selectedIndex].text;
+            const levelText = levelDrop.options[levelDrop.selectedIndex].text;
+            const beffText = beffDrop.options[beffDrop.selectedIndex].text;
+            
+            let extras = [];
+            document.querySelectorAll('.custom-addon:checked').forEach((checkbox) => {
+                extras.push("• " + checkbox.nextElementSibling.innerText);
+            });
+            const extrasText = extras.length > 0 ? extras.join('\\n') : "None";
+            const totalText = document.getElementById('custom-total').innerText;
+
+            const payload = {
+                content: "🔔 **New Custom Account Request!**",
+                embeds: [{
+                    title: "🛠️ Awaiting Approval",
+                    color: 65280, 
+                    description: `**Verified Buyer ID:** <@${verifiedUserId}> (${verifiedUserId})`,
+                    fields: [
+                        { name: "GTA Cash", value: cashText, inline: true },
+                        { name: "RP Level", value: levelText, inline: true },
+                        { name: "20x Beff Outfits", value: beffText, inline: true },
+                        { name: "Extra Features", value: extrasText, inline: false },
+                        { name: "Total Estimated Price", value: totalText, inline: false }
+                    ],
+                    footer: { text: "Use Bot Command to Approve & DM Buyer" },
+                    timestamp: new Date().toISOString()
+                }]
+            };
+
+            try {
+                const response = await fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (response.ok) {
+                    btn.classList.add('hidden'); 
+                    document.getElementById('order-success-box').classList.remove('hidden');
+                } else {
+                    throw new Error('Discord rejected the webhook');
+                }
+            } catch (error) {
+                console.error(error);
+                alert("Failed to send request. Please try again.");
+                btn.innerText = "Send Order Request";
+                btn.disabled = false;
+            }
+        }
+
+        // 4. Pre-Made Inventory Fetch Logic
+        let globalOffers = [];
+        async function loadOffers() {
+            try {
+                const response = await fetch('./inventory.json');
+                globalOffers = await response.json();
+                
+                document.getElementById('loading').style.display = 'none';
+                const grid = document.getElementById('offers-grid');
+                grid.classList.remove('opacity-0');
+                
+                if (globalOffers.length === 0) {
+                    grid.innerHTML = '<div class="col-span-full py-20 text-center glass-panel rounded-3xl"><p class="text-gray-500 text-xl">Pre-made accounts are currently sold out.<br>Check back soon.</p></div>';
+                    return;
+                }
+
+                grid.innerHTML = globalOffers.map((offer, index) => `
+                    <div class="group relative glass-panel rounded-3xl overflow-hidden hover:border-brand/50 hover:shadow-glow transition-all duration-300 hover:-translate-y-2">
+                        <div class="relative h-48 overflow-hidden bg-black">
+                            <img src="${offer.image}" alt="Account Image" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="px-2 py-1 bg-white/5 text-xs font-bold text-gray-400 uppercase tracking-wider rounded border border-white/10">${offer.game}</span>
+                                <span class="text-brand font-black text-xl drop-shadow-[0_0_10px_rgba(0,255,0,0.3)]">$${offer.price}</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-6 line-clamp-2 leading-tight">${offer.title}</h3>
+                            <button onclick="openModal(${index})" class="flex items-center justify-center w-full bg-white/5 hover:bg-brand text-white hover:text-black font-bold py-3 px-4 rounded-xl border border-white/10 hover:border-brand transition-all duration-300">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.error(error);
+                document.getElementById('loading').innerHTML = '<p class="text-red-500 font-bold tracking-wide">ERROR LOADING INVENTORY.</p>';
+            }
+        }
+        
+        // 5. Modal Controls
+        function openModal(index) {
+            const offer = globalOffers[index];
+            document.getElementById('modal-title').innerText = offer.title;
+            document.getElementById('modal-price').innerText = '$' + offer.price;
+            document.getElementById('modal-image').src = offer.image;
+            document.getElementById('modal-desc').innerText = offer.description || 'No additional details provided.';
+            document.getElementById('modal-link').href = offer.link;
+            
+            document.getElementById('offer-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('offer-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // 6. Initialize page
+        loadOffers();
+        calculateTotal(); 
     </script>
 </body>
 </html>
