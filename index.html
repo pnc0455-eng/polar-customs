@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Polar Follow | Premium Accounts</title>
+    <title>Polar Follow | Premium Accounts & Services</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -30,6 +30,7 @@
 </head>
 <body class="bg-dark text-gray-200 min-h-screen font-sans selection:bg-brand selection:text-black">
     
+    <!-- NAVIGATION BAR -->
     <nav class="border-b border-white/5 bg-black/80 backdrop-blur-xl sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
             <div class="flex items-center gap-3">
@@ -37,8 +38,8 @@
                 <h1 class="text-2xl font-black tracking-widest text-white uppercase">Polar Follow</h1>
             </div>
             <div class="flex items-center gap-4">
-                <div class="text-sm font-medium text-gray-400 hidden sm:block mr-4">Automated Inventory & Custom Builds</div>
-                <a href="https://discord.gg/dSNWZYQfrH" target="_blank" class="bg-[#5865F2] hover:bg-[#4752C4] text-white font-bold py-2 px-6 rounded-lg transition-all shadow-lg hover:-translate-y-0.5 flex items-center gap-2">
+                <a href="#order-lookup" class="text-sm font-medium text-gray-400 hover:text-brand transition hidden sm:block">Track Order</a>
+                <a href="https://discord.gg/YOUR_INVITE_LINK" target="_blank" class="bg-[#5865F2] hover:bg-[#4752C4] text-white font-bold py-2 px-6 rounded-lg transition-all shadow-lg hover:-translate-y-0.5 flex items-center gap-2">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></svg>
                     Join Discord
                 </a>
@@ -46,38 +47,60 @@
         </div>
     </nav>
 
+    <!-- HERO SECTION -->
     <div class="relative overflow-hidden bg-dark py-20 mb-12 border-b border-brand/10">
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-brand/5 via-dark to-dark"></div>
         <div class="relative max-w-7xl mx-auto px-6 text-center">
             <h2 class="text-5xl md:text-6xl font-black text-white mb-6 tracking-tight">Level Up Your <span class="text-brand drop-shadow-[0_0_15px_rgba(0,255,0,0.5)]">Gaming</span></h2>
-            <p class="text-xl text-gray-400 max-w-2xl mx-auto mb-10">Instant delivery on pre-mades, premium custom builds, and automated Discord integrations.</p>
+            <p class="text-xl text-gray-400 max-w-2xl mx-auto mb-10">Instant delivery on pre-mades, cross-platform custom builds, and VIP subscriptions.</p>
         </div>
     </div>
 
     <main class="max-w-7xl mx-auto px-6 pb-20">
         
-        <!-- NEW SUBSCRIPTION TIER SECTION -->
-        <div class="mb-20 glass-panel rounded-3xl p-8 lg:p-12 shadow-2xl relative overflow-hidden">
-            <div class="absolute -right-20 -top-20 w-64 h-64 bg-brand/10 rounded-full blur-3xl -z-10"></div>
-            <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+        <!-- SUBSCRIPTION TIERS SECTION -->
+        <h3 class="text-3xl font-bold text-white mb-8 border-b border-white/10 pb-4">VIP Subscriptions</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+            
+            <!-- Weekly -->
+            <div class="glass-panel rounded-3xl p-8 border border-white/10 hover:border-brand/40 transition flex flex-col justify-between relative overflow-hidden">
                 <div>
-                    <span class="bg-brand text-black font-black text-xs uppercase tracking-widest px-3 py-1 rounded-full mb-4 inline-block">VIP Access</span>
-                    <h3 class="text-3xl font-bold text-white mb-3">Polar Weekly Subscription</h3>
-                    <p class="text-gray-400 max-w-xl">Get exclusive perks, priority queue for custom accounts, and access to premium weekly drops by subscribing to our VIP tier.</p>
+                    <span class="bg-white/10 text-gray-300 font-bold text-xs uppercase tracking-widest px-3 py-1 rounded-full mb-4 inline-block">Starter VIP</span>
+                    <h4 class="text-2xl font-bold text-white mb-2">Weekly Pass</h4>
+                    <p class="text-gray-400 text-sm mb-6">Priority queue on all custom builds & basic discord perks.</p>
+                    <div class="text-4xl font-black text-brand mb-6">$7.99 <span class="text-sm text-gray-500 font-normal">/ week</span></div>
                 </div>
-                <div class="text-center md:text-right shrink-0">
-                    <div class="text-4xl font-black text-brand mb-4">$7.99 <span class="text-sm text-gray-500 font-medium tracking-normal">/ week</span></div>
-                    <a href="https://buy.stripe.com/7sYdRbalB5op0qRc5WfUQ02" class="inline-block bg-brand hover:bg-green-400 text-black font-bold text-lg py-4 px-10 rounded-xl shadow-glow transition-all hover:scale-105">
-                        Subscribe Now
-                    </a>
+                <a href="YOUR_STRIPE_WEEKLY_LINK_HERE" target="_blank" class="w-full text-center bg-white/10 hover:bg-brand hover:text-black text-white font-bold py-3 rounded-xl transition">Subscribe Weekly</a>
+            </div>
+
+            <!-- Monthly (Featured) -->
+            <div class="glass-panel rounded-3xl p-8 border-2 border-brand shadow-glow relative flex flex-col justify-between overflow-hidden">
+                <div class="absolute -right-12 -top-12 w-32 h-32 bg-brand/20 rounded-full blur-2xl"></div>
+                <div>
+                    <span class="bg-brand text-black font-black text-xs uppercase tracking-widest px-3 py-1 rounded-full mb-4 inline-block">Most Popular</span>
+                    <h4 class="text-2xl font-bold text-white mb-2">Monthly VIP</h4>
+                    <p class="text-gray-400 text-sm mb-6">Exclusive weekly drops, priority modding queue, and custom Discord role.</p>
+                    <div class="text-4xl font-black text-brand mb-6">$24.99 <span class="text-sm text-gray-500 font-normal">/ month</span></div>
                 </div>
+                <a href="YOUR_STRIPE_MONTHLY_LINK_HERE" target="_blank" class="w-full text-center bg-brand hover:bg-green-400 text-black font-bold py-4 rounded-xl shadow-glow transition hover:scale-105">Subscribe Monthly</a>
+            </div>
+
+            <!-- Yearly -->
+            <div class="glass-panel rounded-3xl p-8 border border-white/10 hover:border-brand/40 transition flex flex-col justify-between relative overflow-hidden">
+                <div>
+                    <span class="bg-white/10 text-gray-300 font-bold text-xs uppercase tracking-widest px-3 py-1 rounded-full mb-4 inline-block">Best Value</span>
+                    <h4 class="text-2xl font-bold text-white mb-2">Annual Pass</h4>
+                    <p class="text-gray-400 text-sm mb-6">Unlocks lifetime VIP status, maximum priority, and 30% savings overall.</p>
+                    <div class="text-4xl font-black text-brand mb-6">$199.99 <span class="text-sm text-gray-500 font-normal">/ year</span></div>
+                </div>
+                <a href="YOUR_STRIPE_YEARLY_LINK_HERE" target="_blank" class="w-full text-center bg-white/10 hover:bg-brand hover:text-black text-white font-bold py-3 rounded-xl transition">Subscribe Yearly</a>
             </div>
         </div>
 
         <!-- THE GATEKEEPER PANEL -->
         <div id="gatekeeper-panel" class="mb-20 glass-panel rounded-3xl p-8 lg:p-12 shadow-2xl text-center max-w-3xl mx-auto border border-brand/20">
-            <h3 class="text-3xl font-bold text-white mb-3">Custom Build Access</h3>
-            <p class="text-gray-400 mb-8">You must be a member of our Discord server to request a custom account. We verify this so our Bot can DM you your payment link.</p>
+            <h3 class="text-3xl font-bold text-white mb-3">Custom Build Verification</h3>
+            <p class="text-gray-400 mb-8">Enter your Discord User ID so our bot can locate your profile and DM your custom Stripe checkout link upon staff approval.</p>
             
             <div class="flex flex-col md:flex-row gap-4 justify-center max-w-lg mx-auto mb-4">
                 <input type="text" id="verify-discord-id" placeholder="Discord User ID (e.g. 150740300...)" class="w-full bg-black/50 border border-gray-700 text-white rounded-xl px-5 py-4 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-all">
@@ -95,8 +118,27 @@
                     <h3 class="text-3xl font-bold text-white mb-2 flex items-center gap-3">
                         Build Your Account <span class="bg-brand/20 text-brand text-xs uppercase tracking-widest px-3 py-1 rounded-full border border-brand/30">Verified</span>
                     </h3>
-                    <p class="text-gray-400 mb-8">Select your desired stats. Our Bot will instantly send this to our staff.</p>
+                    <p class="text-gray-400 mb-6">Select your gaming platform and custom account parameters below.</p>
                     
+                    <!-- PLATFORM SELECTION TABS -->
+                    <div class="mb-8">
+                        <label class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-3">Select Platform</label>
+                        <div class="grid grid-cols-2 sm:grid-cols-5 gap-2" id="platform-tabs">
+                            <button onclick="selectPlatform('Xbox One')" class="platform-btn active-platform bg-brand text-black font-bold py-3 px-2 rounded-xl text-xs transition text-center border border-brand" data-platform="Xbox One">Xbox One</button>
+                            <button onclick="selectPlatform('Xbox Series S/X')" class="platform-btn bg-black/50 hover:bg-white/10 text-gray-300 font-bold py-3 px-2 rounded-xl text-xs transition text-center border border-gray-800" data-platform="Xbox Series S/X">Xbox Ser. S/X</button>
+                            <button onclick="selectPlatform('PS4')" class="platform-btn bg-black/50 hover:bg-white/10 text-gray-300 font-bold py-3 px-2 rounded-xl text-xs transition text-center border border-gray-800" data-platform="PS4">PS4</button>
+                            <button onclick="selectPlatform('PS5')" class="platform-btn bg-black/50 hover:bg-white/10 text-gray-300 font-bold py-3 px-2 rounded-xl text-xs transition text-center border border-gray-800" data-platform="PS5">PS5</button>
+                            <button onclick="selectPlatform('PC')" class="platform-btn bg-black/50 hover:bg-white/10 text-gray-300 font-bold py-3 px-2 rounded-xl text-xs transition text-center border border-gray-800" data-platform="PC">PC</button>
+                        </div>
+                    </div>
+
+                    <!-- MANDATORY EMAIL INPUT FOR STRIPE VERIFICATION -->
+                    <div class="mb-8">
+                        <label class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Stripe Checkout Email <span class="text-brand">*Required</span></label>
+                        <input type="email" id="custom-email" placeholder="email@example.com (Must match your Stripe payment email)" class="w-full bg-black/50 border border-gray-700 text-white rounded-xl p-4 focus:outline-none focus:border-brand transition">
+                        <p class="text-xs text-gray-500 mt-1">This is required so staff can verify your payment receipt against your Discord request.</p>
+                    </div>
+
                     <div class="space-y-6">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
@@ -121,8 +163,8 @@
                                 <label class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">20x Beff Outfits</label>
                                 <select id="custom-beff" onchange="calculateTotal()" class="w-full bg-black/50 border border-gray-700 text-white rounded-xl p-4 focus:outline-none focus:border-brand transition">
                                     <option value="0">None</option>
-                                    <option value="10">Male (+$10)</option>
-                                    <option value="10">Female (+$10)</option>
+                                    <option value="10">Male Outfits (+$10)</option>
+                                    <option value="10">Female Outfits (+$10)</option>
                                 </select>
                             </div>
                         </div>
@@ -151,6 +193,9 @@
                 </div>
 
                 <div class="w-full lg:w-2/5 bg-black/40 p-8 rounded-2xl border border-gray-800 text-center flex flex-col justify-center h-full lg:sticky lg:top-24">
+                    <div class="text-gray-500 font-bold uppercase tracking-widest mb-1 text-xs">Platform Selected</div>
+                    <div id="selected-platform-display" class="text-brand font-bold text-lg mb-4">Xbox One</div>
+
                     <div class="text-gray-500 font-bold uppercase tracking-widest mb-2 text-sm">Estimated Total</div>
                     <div id="custom-total" class="text-6xl font-black text-brand mb-8 drop-shadow-[0_0_15px_rgba(0,255,0,0.5)]">$20.00</div>
                     
@@ -161,15 +206,54 @@
                     <div id="order-success-box" class="hidden mt-4 p-5 bg-brand/10 border border-brand/30 rounded-xl text-left backdrop-blur-md">
                         <p class="text-brand font-bold mb-2 text-lg">✅ Request Sent to Staff!</p>
                         <p class="text-sm text-gray-300 leading-relaxed">
-                            Our automated bot will send you a direct message on Discord with your Stripe link when approved.
+                            Our automated bot will send you a direct message on Discord with your Stripe checkout link once reviewed.
                         </p>
                     </div>
                 </div>
             </div>
         </div>
 
+        <!-- ORDER LOOKUP SECTION -->
+        <div id="order-lookup" class="mb-20 glass-panel rounded-3xl p-8 lg:p-12 border border-white/10 max-w-4xl mx-auto">
+            <h3 class="text-3xl font-bold text-white mb-2">Track Your Order</h3>
+            <p class="text-gray-400 mb-6">Enter your Order ID or Discord User ID below to check the real-time fulfillment status of your account.</p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 mb-6">
+                <input type="text" id="lookup-input" placeholder="Enter Order ID (e.g. POLAR-104) or Discord ID" class="w-full bg-black/50 border border-gray-700 text-white rounded-xl px-5 py-4 focus:outline-none focus:border-brand transition">
+                <button onclick="lookupOrder()" class="bg-brand hover:bg-green-400 text-black font-bold py-4 px-8 rounded-xl shadow-glow transition whitespace-nowrap">
+                    Search Order
+                </button>
+            </div>
+
+            <div id="lookup-result" class="hidden bg-black/40 p-6 rounded-2xl border border-gray-800">
+                <div class="flex items-center justify-between mb-4 border-b border-gray-800 pb-3">
+                    <span id="result-order-id" class="text-white font-bold text-lg">Order #---</span>
+                    <span id="result-status" class="bg-yellow-500/20 text-yellow-400 border border-yellow-500/30 px-3 py-1 rounded-full text-xs font-bold uppercase">In Progress</span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-300">
+                    <div><strong class="text-gray-500">Platform:</strong> <span id="result-platform">--</span></div>
+                    <div><strong class="text-gray-500">Details:</strong> <span id="result-details">--</span></div>
+                    <div><strong class="text-gray-500">Estimated Delivery:</strong> <span id="result-eta">15-45 Minutes</span></div>
+                    <div><strong class="text-gray-500">Fulfillment Modder:</strong> <span id="result-modder">Assigned</span></div>
+                </div>
+            </div>
+            <p id="lookup-error" class="text-red-500 font-bold hidden text-sm">No active order found for that ID. Check your ID and try again.</p>
+        </div>
+
         <!-- PRE-MADE INVENTORY SECTION -->
-        <h3 class="text-3xl font-bold text-white mb-8 border-b border-white/10 pb-4 mt-20">Pre-Made Inventory</h3>
+        <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 border-b border-white/10 pb-4 gap-4">
+            <h3 class="text-3xl font-bold text-white">Pre-Made Inventory</h3>
+            
+            <div class="flex flex-wrap items-center gap-3">
+                <input type="text" id="inventory-search" oninput="filterInventory()" placeholder="Search accounts..." class="bg-black/50 border border-gray-800 text-white text-sm rounded-xl px-4 py-2 focus:outline-none focus:border-brand transition">
+                <select id="inventory-filter-platform" onchange="filterInventory()" class="bg-black/50 border border-gray-800 text-white text-sm rounded-xl px-4 py-2 focus:outline-none focus:border-brand transition">
+                    <option value="ALL">All Platforms</option>
+                    <option value="Xbox">Xbox</option>
+                    <option value="PlayStation">PlayStation</option>
+                    <option value="PC">PC</option>
+                </select>
+            </div>
+        </div>
         
         <div id="loading" class="flex flex-col items-center justify-center py-20">
             <div class="w-12 h-12 border-4 border-white/10 border-t-brand rounded-full animate-spin mb-4"></div>
@@ -180,7 +264,7 @@
 
     </main>
 
-    <!-- THE POP-UP FOR PRE-MADE ACCOUNTS -->
+    <!-- POP-UP MODAL FOR PRE-MADE ACCOUNTS -->
     <div id="offer-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
         <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeModal()"></div>
         <div class="relative glass-panel rounded-3xl w-full max-w-2xl shadow-2xl overflow-hidden modal-enter flex flex-col md:flex-row border border-brand/20">
@@ -198,35 +282,53 @@
                     <p id="modal-desc" class="text-gray-300 text-sm leading-relaxed mb-8 h-32 overflow-y-auto pr-2">Description goes here...</p>
                 </div>
                 <a id="modal-link" href="#" target="_blank" class="flex items-center justify-center gap-2 w-full bg-brand hover:bg-green-400 text-black font-bold py-4 px-4 rounded-xl shadow-glow transition-all hover:scale-105">
-                    Buy via PlayerAuctions
+                    Buy Account Now
                 </a>
             </div>
         </div>
     </div>
 
-    <!-- COMPLETE JAVASCRIPT -->
+    <!-- MAIN JAVASCRIPT LOGIC -->
     <script>
         let verifiedUserId = "";
+        let selectedPlatform = "Xbox One";
+        let globalOffers = [];
 
-        // 1. Verification Logic
+        // 1. Platform Tab Switcher
+        function selectPlatform(platformName) {
+            selectedPlatform = platformName;
+            document.getElementById('selected-platform-display').innerText = platformName;
+
+            const buttons = document.querySelectorAll('.platform-btn');
+            buttons.forEach(btn => {
+                if (btn.getAttribute('data-platform') === platformName) {
+                    btn.className = "platform-btn active-platform bg-brand text-black font-bold py-3 px-2 rounded-xl text-xs transition text-center border border-brand";
+                } else {
+                    btn.className = "platform-btn bg-black/50 hover:bg-white/10 text-gray-300 font-bold py-3 px-2 rounded-xl text-xs transition text-center border border-gray-800";
+                }
+            });
+        }
+
+        // 2. Member Verification Logic
         async function verifyMember() {
             const inputId = document.getElementById('verify-discord-id').value.trim();
             const btn = document.getElementById('verify-btn');
             const errorMsg = document.getElementById('verify-error');
             
             if (!inputId) {
-                errorMsg.innerText = "Please enter a Discord User ID.";
+                errorMsg.innerText = "Please enter a valid Discord User ID.";
                 errorMsg.classList.remove('hidden');
                 return;
             }
 
-            btn.innerText = "Checking API...";
+            btn.innerText = "Checking...";
             btn.disabled = true;
             errorMsg.classList.add('hidden');
 
             try {
                 const response = await fetch('/.netlify/functions/verify', {
                     method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ userId: inputId })
                 });
 
@@ -251,7 +353,7 @@
             }
         }
 
-        // 2. Custom Account Calculator
+        // 3. Custom Account Price Calculator
         function calculateTotal() {
             const basePrice = 20; 
             const cashPrice = parseInt(document.getElementById('custom-cash').value) || 0;
@@ -267,12 +369,18 @@
             document.getElementById('custom-total').innerText = '$' + total + '.00';
         }
 
-        // 3. Send Request to Webhook
+        // 4. Send Order Webhook to Discord
         async function sendWebhook() {
             const webhookUrl = "https://discord.com/api/webhooks/1529314249657286739/l4erVSTVIpSghj2yQ_Sw8kNgZKti_Mh09HfsQKA2xlQvWFDn63eEkGe5BkAjN1caBzAr"; 
             
+            const emailInput = document.getElementById('custom-email').value.trim();
+            if (!emailInput || !emailInput.includes('@')) {
+                alert("Please enter a valid Stripe Checkout Email before submitting!");
+                return;
+            }
+
             const btn = document.getElementById('webhook-btn');
-            btn.innerText = "Sending...";
+            btn.innerText = "Submitting Order...";
             btn.disabled = true;
 
             const cashDrop = document.getElementById('custom-cash');
@@ -287,23 +395,24 @@
             document.querySelectorAll('.custom-addon:checked').forEach((checkbox) => {
                 extras.push("• " + checkbox.nextElementSibling.innerText);
             });
-            const extrasText = extras.length > 0 ? extras.join('\\n') : "None";
+            const extrasText = extras.length > 0 ? extras.join('\n') : "None";
             const totalText = document.getElementById('custom-total').innerText;
 
             const payload = {
-                content: "🔔 **New Custom Account Request!**",
+                content: "🔔 **New Custom Account Order Request!**",
                 embeds: [{
-                    title: "🛠️ Awaiting Approval",
+                    title: "🛠️ Custom Build Request",
                     color: 65280, 
-                    description: `**Verified Buyer ID:** <@${verifiedUserId}> (${verifiedUserId})`,
+                    description: `**Verified Buyer:** <@${verifiedUserId}> (${verifiedUserId})\n**Stripe Checkout Email:** \`${emailInput}\``,
                     fields: [
+                        { name: "Console / Platform", value: `🎮 **${selectedPlatform}**`, inline: true },
                         { name: "GTA Cash", value: cashText, inline: true },
                         { name: "RP Level", value: levelText, inline: true },
                         { name: "20x Beff Outfits", value: beffText, inline: true },
                         { name: "Extra Features", value: extrasText, inline: false },
                         { name: "Total Estimated Price", value: totalText, inline: false }
                     ],
-                    footer: { text: "Use Bot Command to Approve & DM Buyer" },
+                    footer: { text: "Use /approve <buyer> <stripe_link> to complete" },
                     timestamp: new Date().toISOString()
                 }]
             };
@@ -319,56 +428,119 @@
                     btn.classList.add('hidden'); 
                     document.getElementById('order-success-box').classList.remove('hidden');
                 } else {
-                    throw new Error('Discord rejected the webhook');
+                    throw new Error('Discord rejected webhook');
                 }
             } catch (error) {
                 console.error(error);
-                alert("Failed to send request. Please try again.");
+                alert("Failed to submit request. Please check connection.");
                 btn.innerText = "Send Order Request";
                 btn.disabled = false;
             }
         }
 
-        // 4. Pre-Made Inventory Fetch Logic
-        let globalOffers = [];
+        // 5. Order Lookup Logic
+        async function lookupOrder() {
+            const query = document.getElementById('lookup-input').value.trim().toLowerCase();
+            const resultBox = document.getElementById('lookup-result');
+            const errorMsg = document.getElementById('lookup-error');
+
+            resultBox.classList.add('hidden');
+            errorMsg.classList.add('hidden');
+
+            if (!query) {
+                errorMsg.innerText = "Please enter an Order ID or Discord ID.";
+                errorMsg.classList.remove('hidden');
+                return;
+            }
+
+            try {
+                const response = await fetch('./orders.json');
+                const orders = await response.json();
+
+                const matchedOrder = orders.find(o => 
+                    (o.orderId && o.orderId.toLowerCase() === query) || 
+                    (o.discordId && o.discordId.toLowerCase() === query)
+                );
+
+                if (matchedOrder) {
+                    document.getElementById('result-order-id').innerText = `Order #${matchedOrder.orderId || 'POLAR'}`;
+                    document.getElementById('result-status').innerText = matchedOrder.status || "In Progress";
+                    document.getElementById('result-platform').innerText = matchedOrder.platform || "Multi-Platform";
+                    document.getElementById('result-details').innerText = matchedOrder.details || "Custom Account Modding";
+                    document.getElementById('result-eta').innerText = matchedOrder.eta || "15-45 Minutes";
+                    document.getElementById('result-modder').innerText = matchedOrder.modder || "Staff Assigned";
+                    
+                    resultBox.classList.remove('hidden');
+                } else {
+                    errorMsg.innerText = "No active order found for that ID.";
+                    errorMsg.classList.remove('hidden');
+                }
+            } catch (err) {
+                errorMsg.innerText = "Order database unavailable. Contact support in Discord.";
+                errorMsg.classList.remove('hidden');
+            }
+        }
+
+        // 6. Pre-Made Inventory Fetch & Search Filter
         async function loadOffers() {
             try {
                 const response = await fetch('./inventory.json');
                 globalOffers = await response.json();
                 
                 document.getElementById('loading').style.display = 'none';
-                const grid = document.getElementById('offers-grid');
-                grid.classList.remove('opacity-0');
-                
-                if (globalOffers.length === 0) {
-                    grid.innerHTML = '<div class="col-span-full py-20 text-center glass-panel rounded-3xl"><p class="text-gray-500 text-xl">Pre-made accounts are currently sold out.<br>Check back soon.</p></div>';
-                    return;
-                }
-
-                grid.innerHTML = globalOffers.map((offer, index) => `
-                    <div class="group relative glass-panel rounded-3xl overflow-hidden hover:border-brand/50 hover:shadow-glow transition-all duration-300 hover:-translate-y-2">
-                        <div class="relative h-48 overflow-hidden bg-black">
-                            <img src="${offer.image}" alt="Account Image" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700">
-                        </div>
-                        <div class="p-6">
-                            <div class="flex items-center justify-between mb-3">
-                                <span class="px-2 py-1 bg-white/5 text-xs font-bold text-gray-400 uppercase tracking-wider rounded border border-white/10">${offer.game}</span>
-                                <span class="text-brand font-black text-xl drop-shadow-[0_0_10px_rgba(0,255,0,0.3)]">$${offer.price}</span>
-                            </div>
-                            <h3 class="text-lg font-bold text-white mb-6 line-clamp-2 leading-tight">${offer.title}</h3>
-                            <button onclick="openModal(${index})" class="flex items-center justify-center w-full bg-white/5 hover:bg-brand text-white hover:text-black font-bold py-3 px-4 rounded-xl border border-white/10 hover:border-brand transition-all duration-300">
-                                View Details
-                            </button>
-                        </div>
-                    </div>
-                `).join('');
+                renderInventory(globalOffers);
             } catch (error) {
                 console.error(error);
                 document.getElementById('loading').innerHTML = '<p class="text-red-500 font-bold tracking-wide">ERROR LOADING INVENTORY.</p>';
             }
         }
-        
-        // 5. Modal Controls
+
+        function renderInventory(offers) {
+            const grid = document.getElementById('offers-grid');
+            grid.classList.remove('opacity-0');
+
+            if (!offers || offers.length === 0) {
+                grid.innerHTML = '<div class="col-span-full py-16 text-center glass-panel rounded-3xl"><p class="text-gray-500 text-lg">No matching accounts found in live inventory.</p></div>';
+                return;
+            }
+
+            grid.innerHTML = offers.map((offer, index) => `
+                <div class="group relative glass-panel rounded-3xl overflow-hidden hover:border-brand/50 hover:shadow-glow transition-all duration-300 hover:-translate-y-2">
+                    <div class="relative h-48 overflow-hidden bg-black">
+                        <img src="${offer.image}" alt="Account Image" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700">
+                        <span class="absolute top-3 right-3 bg-black/70 backdrop-blur-md text-brand font-bold text-xs px-3 py-1 rounded-full border border-brand/30">${offer.game || 'GTA V'}</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-2.5 py-1 bg-white/5 text-xs font-bold text-gray-300 uppercase tracking-wider rounded border border-white/10">${offer.platform || 'Cross-Platform'}</span>
+                            <span class="text-brand font-black text-xl drop-shadow-[0_0_10px_rgba(0,255,0,0.3)]">$${offer.price}</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-6 line-clamp-2 leading-tight">${offer.title}</h3>
+                        <button onclick="openModal(${index})" class="flex items-center justify-center w-full bg-white/5 hover:bg-brand text-white hover:text-black font-bold py-3 px-4 rounded-xl border border-white/10 hover:border-brand transition-all duration-300">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterInventory() {
+            const search = document.getElementById('inventory-search').value.toLowerCase();
+            const platform = document.getElementById('inventory-filter-platform').value;
+
+            const filtered = globalOffers.filter(offer => {
+                const matchesSearch = (offer.title && offer.title.toLowerCase().includes(search)) || 
+                                      (offer.description && offer.description.toLowerCase().includes(search));
+                const matchesPlatform = (platform === 'ALL') || 
+                                        (offer.platform && offer.platform.toLowerCase().includes(platform.toLowerCase())) ||
+                                        (offer.title && offer.title.toLowerCase().includes(platform.toLowerCase()));
+                return matchesSearch && matchesPlatform;
+            });
+
+            renderInventory(filtered);
+        }
+
+        // 7. Modal Handlers
         function openModal(index) {
             const offer = globalOffers[index];
             document.getElementById('modal-title').innerText = offer.title;
@@ -386,7 +558,7 @@
             document.body.style.overflow = 'auto';
         }
 
-        // 6. Initialize page
+        // Init
         loadOffers();
         calculateTotal(); 
     </script>
