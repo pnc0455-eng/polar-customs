@@ -20,6 +20,12 @@
         ::-webkit-scrollbar-track { background: #0a0a0a; }
         ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #00FF00; }
+        
+        .modal-enter { animation: modalFadeIn 0.3s ease-out forwards; }
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.95) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
     </style>
 </head>
 <body class="bg-dark text-gray-200 min-h-screen font-sans selection:bg-brand selection:text-black">
@@ -151,7 +157,41 @@
                 </div>
             </div>
         </div>
+
+        <!-- PRE-MADE INVENTORY SECTION (RESTORED) -->
+        <h3 class="text-3xl font-bold text-white mb-8 border-b border-gray-800 pb-4">Pre-Made Inventory</h3>
+        
+        <div id="loading" class="flex flex-col items-center justify-center py-20">
+            <div class="w-12 h-12 border-4 border-gray-800 border-t-brand rounded-full animate-spin mb-4"></div>
+            <p class="text-brand font-medium tracking-wide">SYNCING LIVE INVENTORY...</p>
+        </div>
+        
+        <div id="offers-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 opacity-0 transition-opacity duration-1000"></div>
     </main>
+
+    <!-- THE POP-UP FOR PRE-MADE ACCOUNTS -->
+    <div id="offer-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeModal()"></div>
+        <div class="relative bg-[#111] border border-gray-800 rounded-2xl w-full max-w-2xl shadow-2xl overflow-hidden modal-enter flex flex-col md:flex-row">
+            <button onclick="closeModal()" class="absolute top-3 right-3 z-10 bg-black/50 hover:bg-brand text-gray-300 hover:text-black rounded-full p-2 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </button>
+            <div class="md:w-1/2 h-64 md:h-auto bg-gray-900 border-r border-gray-800">
+                <img id="modal-image" src="" alt="Account Preview" class="w-full h-full object-cover">
+            </div>
+            <div class="md:w-1/2 p-8 flex flex-col justify-between">
+                <div>
+                    <h2 id="modal-title" class="text-2xl font-bold text-white mb-2 leading-tight">Title</h2>
+                    <div class="text-brand font-black text-3xl mb-6" id="modal-price">$0.00</div>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wider mb-2">Account Details</h3>
+                    <p id="modal-desc" class="text-gray-300 text-sm leading-relaxed mb-8 h-32 overflow-y-auto pr-2">Description goes here...</p>
+                </div>
+                <a id="modal-link" href="#" target="_blank" class="flex items-center justify-center gap-2 w-full bg-brand hover:bg-green-500 text-black font-bold py-4 px-4 rounded-xl shadow-[0_0_15px_rgba(0,255,0,0.4)] transition-all hover:scale-[1.02]">
+                    Buy via PlayerAuctions
+                </a>
+            </div>
+        </div>
+    </div>
 
     <script>
         // Store their Discord ID globally once verified
@@ -174,7 +214,7 @@
             errorMsg.classList.add('hidden');
 
             try {
-                // Call your new secure Netlify Function
+                // Call your secure Netlify Function
                 const response = await fetch('/.netlify/functions/verify', {
                     method: 'POST',
                     body: JSON.stringify({ userId: inputId })
@@ -220,7 +260,6 @@
 
         // Send Request to Admin Channel
         async function sendWebhook() {
-            // Your webhook link stays here to easily dump the order into your channel
             const webhookUrl = "https://discord.com/api/webhooks/1529314249657286739/l4erVSTVIpSghj2yQ_Sw8kNgZKti_Mh09HfsQKA2xlQvWFDn63eEkGe5BkAjN1caBzAr"; 
             
             const btn = document.getElementById('webhook-btn');
@@ -280,6 +319,65 @@
                 btn.disabled = false;
             }
         }
+
+        // RESTORED: Pre-Made Accounts Fetch Logic
+        let globalOffers = [];
+        async function loadOffers() {
+            try {
+                const response = await fetch('./inventory.json');
+                globalOffers = await response.json();
+                
+                document.getElementById('loading').style.display = 'none';
+                const grid = document.getElementById('offers-grid');
+                grid.classList.remove('opacity-0');
+                
+                if (globalOffers.length === 0) {
+                    grid.innerHTML = '<div class="col-span-full py-20 text-center border-2 border-dashed border-gray-800 rounded-2xl"><p class="text-gray-500 text-xl">Pre-made accounts are currently sold out.<br>Check back soon.</p></div>';
+                    return;
+                }
+
+                grid.innerHTML = globalOffers.map((offer, index) => `
+                    <div class="group relative bg-[#111] rounded-2xl overflow-hidden border border-gray-800 hover:border-brand/50 hover:shadow-glow transition-all duration-300 hover:-translate-y-1">
+                        <div class="relative h-52 overflow-hidden bg-gray-900">
+                            <img src="${offer.image}" alt="Account Image" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="px-2 py-1 bg-gray-800 text-xs font-bold text-gray-300 uppercase tracking-wider rounded border border-gray-700">${offer.game}</span>
+                                <span class="text-brand font-bold text-lg">$${offer.price}</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-6 line-clamp-2 leading-tight">${offer.title}</h3>
+                            <button onclick="openModal(${index})" class="flex items-center justify-center gap-2 w-full bg-brand/10 hover:bg-brand text-brand hover:text-black font-bold py-3 px-4 rounded-xl border border-brand/30 hover:border-brand transition-all duration-300">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.error(error);
+                document.getElementById('loading').innerHTML = '<p class="text-red-500 font-bold tracking-wide">ERROR LOADING INVENTORY. CHECK YOUR JSON FORMAT.</p>';
+            }
+        }
+        
+        function openModal(index) {
+            const offer = globalOffers[index];
+            document.getElementById('modal-title').innerText = offer.title;
+            document.getElementById('modal-price').innerText = '$' + offer.price;
+            document.getElementById('modal-image').src = offer.image;
+            document.getElementById('modal-desc').innerText = offer.description || 'No additional details provided.';
+            document.getElementById('modal-link').href = offer.link;
+            
+            document.getElementById('offer-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('offer-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        loadOffers();
+        calculateTotal(); 
     </script>
 </body>
 </html>
