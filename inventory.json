@@ -8,3 +8,32 @@
     "link": "https://www.playerauctions.com/offer/YOUR_OFFER_NUMBER_1/"
   }
 ]
+[
+  {
+    "title": "Stacked Starter Account",
+    "price": "50.00",
+    "image": "PUT_YOUR_IMAGE_LINK_HERE",
+    "description": "Level 120, 100 Million Cash, 5 Custom Outfits, Max Stats.",
+    "link": "PUT_YOUR_STRIPE_PAYMENT_LINK_HERE",
+    "game": "GTA V",
+    "platform": "Xbox Series S/X"
+  },
+  {
+    "title": "Mid-Tier Modded Beast",
+    "price": "90.00",
+    "image": "PUT_YOUR_IMAGE_LINK_HERE",
+    "description": "Level 250, 500 Million Cash, 10 Custom Outfits, Max Unlocks.",
+    "link": "PUT_YOUR_STRIPE_PAYMENT_LINK_HERE",
+    "game": "GTA V",
+    "platform": "PS5"
+  },
+  {
+    "title": "God Tier Billionaire Account",
+    "price": "150.00",
+    "image": "PUT_YOUR_IMAGE_LINK_HERE",
+    "description": "Level 500+, 1 Billion+ Cash, 20x Outfits, Fast Run, All Unlocks.",
+    "link": "PUT_YOUR_STRIPE_PAYMENT_LINK_HERE",
+    "game": "GTA V",
+    "platform": "PC"
+  }
+]
