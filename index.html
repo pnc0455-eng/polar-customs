@@ -42,7 +42,7 @@
             <div class="hidden lg:flex items-center gap-6 text-sm font-semibold text-gray-400">
                 <a href="#follower-bot" class="hover:text-brand transition">Xbox Follower Bot</a>
                 <a href="#guide" class="hover:text-brand transition">How It Works</a>
-                <a href="#custom-builder" class="hover:text-brand transition">Custom Account Builder</a>
+                <a href="#custom-packages" class="hover:text-brand transition">Modded Packages</a>
                 <a href="#inventory" class="hover:text-brand transition">Pre-Mades</a>
                 <a href="#order-lookup" class="hover:text-brand transition">Track Order</a>
                 <a href="#faq" class="hover:text-brand transition">FAQ</a>
@@ -84,7 +84,6 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Weekly -->
                 <div class="glass-panel rounded-3xl p-8 border border-white/10 hover:border-brand/40 transition flex flex-col justify-between relative overflow-hidden">
                     <div>
                         <span class="bg-white/10 text-gray-300 font-bold text-xs uppercase tracking-widest px-3 py-1 rounded-full mb-4 inline-block">Weekly Pass</span>
@@ -95,7 +94,6 @@
                     <a href="YOUR_STRIPE_WEEKLY_LINK_HERE" target="_blank" class="w-full text-center bg-white/10 hover:bg-brand hover:text-black text-white font-bold py-3.5 rounded-xl transition">Subscribe Weekly</a>
                 </div>
 
-                <!-- Monthly (Featured) -->
                 <div class="glass-panel rounded-3xl p-8 border-2 border-brand shadow-glow relative flex flex-col justify-between overflow-hidden">
                     <div class="absolute -right-12 -top-12 w-32 h-32 bg-brand/20 rounded-full blur-2xl"></div>
                     <div>
@@ -107,7 +105,6 @@
                     <a href="YOUR_STRIPE_MONTHLY_LINK_HERE" target="_blank" class="w-full text-center bg-brand hover:bg-green-400 text-black font-bold py-4 rounded-xl shadow-glow transition hover:scale-105">Subscribe Monthly</a>
                 </div>
 
-                <!-- Yearly -->
                 <div class="glass-panel rounded-3xl p-8 border border-white/10 hover:border-brand/40 transition flex flex-col justify-between relative overflow-hidden">
                     <div>
                         <span class="bg-white/10 text-gray-300 font-bold text-xs uppercase tracking-widest px-3 py-1 rounded-full mb-4 inline-block">Ultimate Value</span>
@@ -124,8 +121,8 @@
         <div id="guide" class="mb-24 glass-panel rounded-3xl p-8 lg:p-12 border border-brand/20 relative overflow-hidden">
             <div class="mb-10 text-center max-w-2xl mx-auto">
                 <span class="text-brand font-bold text-xs uppercase tracking-widest block mb-2">Complete User Guide</span>
-                <h3 class="text-3xl font-bold text-white mb-3">How To Order & Use Services</h3>
-                <p class="text-gray-400 text-sm">Follow these 4 simple steps to get custom modded accounts or activate your Xbox Follower Bot access.</p>
+                <h3 class="text-3xl font-bold text-white mb-3">How To Order Custom Accounts</h3>
+                <p class="text-gray-400 text-sm">Custom Modded Accounts are built to your exact specifications. Delivery takes 24-48 hours. Follow these 4 simple steps.</p>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -134,7 +131,7 @@
                     <div class="w-10 h-10 rounded-xl bg-brand text-black font-black flex items-center justify-center text-lg mb-4">1</div>
                     <h4 class="text-lg font-bold text-white mb-2">Join Our Discord</h4>
                     <p class="text-gray-400 text-xs leading-relaxed">
-                        <strong class="text-brand">Mandatory:</strong> You MUST join our Discord server first! Custom account orders and Follower Bot controls operate exclusively through our Discord bot.
+                        <strong class="text-brand">Mandatory:</strong> You MUST join our Discord server first! Our automated bot handles the secure checkout link delivery exclusively through DMs.
                     </p>
                 </div>
                 <!-- Step 2 -->
@@ -142,30 +139,92 @@
                     <div class="w-10 h-10 rounded-xl bg-brand text-black font-black flex items-center justify-center text-lg mb-4">2</div>
                     <h4 class="text-lg font-bold text-white mb-2">Verify Discord ID</h4>
                     <p class="text-gray-400 text-xs leading-relaxed">
-                        Enter your Discord User ID in the Custom Account Builder below. Our Netlify API verifies that you are in our server so our bot can DM you.
+                        Enter your Discord User ID in the panel below. Our API instantly verifies that you are in our server so our bot can reach you.
                     </p>
                 </div>
                 <!-- Step 3 -->
                 <div class="bg-black/40 p-6 rounded-2xl border border-gray-800">
                     <div class="w-10 h-10 rounded-xl bg-brand text-black font-black flex items-center justify-center text-lg mb-4">3</div>
-                    <h4 class="text-lg font-bold text-white mb-2">Build & Submit Order</h4>
+                    <h4 class="text-lg font-bold text-white mb-2">Build Your Package</h4>
                     <p class="text-gray-400 text-xs leading-relaxed">
-                        Choose your platform (Xbox, PS, PC), select Cash, Level, and Outfits, enter your Stripe Email, and send your request to staff.
+                        Select a pre-made tier or fully customize your stats (Cash, RP, Outfits, Unlocks). Enter your Stripe email and submit!
                     </p>
                 </div>
                 <!-- Step 4 -->
                 <div class="bg-black/40 p-6 rounded-2xl border border-gray-800">
                     <div class="w-10 h-10 rounded-xl bg-brand text-black font-black flex items-center justify-center text-lg mb-4">4</div>
-                    <h4 class="text-lg font-bold text-white mb-2">Receive Bot DM & Pay</h4>
+                    <h4 class="text-lg font-bold text-white mb-2">Receive DM & Pay</h4>
                     <p class="text-gray-400 text-xs leading-relaxed">
-                        Once approved by staff, our bot DMs you a custom Stripe payment link. After payment, your order is fulfilled and tracked live!
+                        Once approved by staff, our bot DMs you a custom Stripe link. After payment, your account is queued and delivered within 24-48 hrs.
                     </p>
                 </div>
             </div>
         </div>
 
+        <!-- PRE-MADE MODDED PACKAGES (NEW TIER SYSTEM) -->
+        <div id="custom-packages" class="mb-12 pt-4">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 border-b border-white/10 pb-6 gap-4">
+                <div>
+                    <span class="text-brand font-bold text-xs uppercase tracking-widest block mb-1">Quick Start</span>
+                    <h3 class="text-3xl font-bold text-white">Pre-Made Modded Packages</h3>
+                </div>
+                <p class="text-gray-400 text-sm max-w-md">Select a bundle below to automatically load the best stats into the Custom Account Builder.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Tier 1 -->
+                <div class="bg-black/40 rounded-3xl p-8 border border-gray-800 hover:border-brand/40 transition flex flex-col justify-between">
+                    <div>
+                        <span class="bg-white/10 text-gray-300 font-bold text-xs uppercase tracking-widest px-3 py-1 rounded-full mb-4 inline-block">Tier 1</span>
+                        <h4 class="text-2xl font-bold text-white mb-4">Starter Modded Pack</h4>
+                        <ul class="text-gray-400 text-sm mb-6 space-y-2">
+                            <li>🟢 Level 120 RP</li>
+                            <li>🟢 100 Million Cash</li>
+                            <li>🟢 20x Custom Outfits</li>
+                            <li class="text-gray-600">❌ Extra Unlocks Bundle</li>
+                        </ul>
+                        <div class="text-4xl font-black text-brand mb-6">$129.99</div>
+                    </div>
+                    <button onclick="selectPackage(1)" class="w-full text-center bg-white/10 hover:bg-brand hover:text-black text-white font-bold py-3.5 rounded-xl transition">Select Tier 1</button>
+                </div>
+
+                <!-- Tier 2 -->
+                <div class="bg-black/40 rounded-3xl p-8 border-2 border-brand/50 shadow-[0_0_15px_rgba(0,255,0,0.1)] relative flex flex-col justify-between">
+                    <div>
+                        <span class="bg-brand text-black font-black text-xs uppercase tracking-widest px-3 py-1 rounded-full mb-4 inline-block">Most Popular - Tier 2</span>
+                        <h4 class="text-2xl font-bold text-white mb-4">The Baller Pack</h4>
+                        <ul class="text-gray-400 text-sm mb-6 space-y-2">
+                            <li>🟢 Level 250 RP</li>
+                            <li>🟢 500 Million Cash</li>
+                            <li>🟢 20x Custom Outfits</li>
+                            <li>🟢 <strong>Max All Unlocks Bundle</strong></li>
+                        </ul>
+                        <div class="text-4xl font-black text-brand mb-6">$169.99</div>
+                    </div>
+                    <button onclick="selectPackage(2)" class="w-full text-center bg-brand hover:bg-green-400 text-black font-bold py-4 rounded-xl shadow-glow transition hover:scale-105">Select Tier 2</button>
+                </div>
+
+                <!-- Tier 3 -->
+                <div class="bg-black/40 rounded-3xl p-8 border border-gray-800 hover:border-brand/40 transition flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute -right-12 -top-12 w-32 h-32 bg-purple-500/10 rounded-full blur-2xl"></div>
+                    <div>
+                        <span class="bg-purple-500/20 text-purple-400 font-bold text-xs uppercase tracking-widest px-3 py-1 rounded-full mb-4 inline-block border border-purple-500/30">Tier 3</span>
+                        <h4 class="text-2xl font-bold text-white mb-4">Ultimate Stacked CEO</h4>
+                        <ul class="text-gray-400 text-sm mb-6 space-y-2">
+                            <li>🔥 Level 500 RP</li>
+                            <li>🔥 1 Billion Cash</li>
+                            <li>🔥 20x Custom Outfits</li>
+                            <li>🔥 <strong>Max All Unlocks Bundle</strong></li>
+                        </ul>
+                        <div class="text-4xl font-black text-brand mb-6">$219.99</div>
+                    </div>
+                    <button onclick="selectPackage(3)" class="w-full text-center bg-white/10 hover:bg-brand hover:text-black text-white font-bold py-3.5 rounded-xl transition">Select Tier 3</button>
+                </div>
+            </div>
+        </div>
+
         <!-- THE GATEKEEPER PANEL -->
-        <div id="gatekeeper-panel" class="mb-20 glass-panel rounded-3xl p-8 lg:p-12 shadow-2xl text-center max-w-3xl mx-auto border border-brand/20">
+        <div id="gatekeeper-panel" class="mb-12 glass-panel rounded-3xl p-8 lg:p-12 shadow-2xl text-center max-w-3xl mx-auto border border-brand/20">
             <h3 class="text-3xl font-bold text-white mb-3">Custom Build Access Verification</h3>
             <p class="text-gray-400 mb-8">Enter your Discord User ID so our system can confirm you are in our server. You must be in the server so our Bot can DM your Stripe link upon staff approval.</p>
             
@@ -179,14 +238,14 @@
         </div>
 
         <!-- HIDDEN CUSTOM ACCOUNT BUILDER -->
-        <div id="custom-builder" class="mb-24">
+        <div id="custom-builder" class="mb-24 scroll-mt-24">
             <div id="custom-builder-panel" class="glass-panel border border-brand/40 rounded-3xl p-8 lg:p-12 shadow-glow relative overflow-hidden hidden transition-all duration-500">
                 <div class="flex flex-col lg:flex-row gap-12 items-start">
                     <div class="w-full lg:w-3/5">
                         <h3 class="text-3xl font-bold text-white mb-2 flex items-center gap-3">
                             Build Your Account <span class="bg-brand/20 text-brand text-xs uppercase tracking-widest px-3 py-1 rounded-full border border-brand/30">Verified</span>
                         </h3>
-                        <p class="text-gray-400 mb-6">Select your gaming platform and custom account parameters below.</p>
+                        <p class="text-gray-400 mb-6">Select your platform and fine-tune your account parameters below. (Base Price: $120.00)</p>
                         
                         <!-- PLATFORM SELECTION TABS -->
                         <div class="mb-8">
@@ -212,19 +271,17 @@
                                 <div>
                                     <label class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">GTA Cash</label>
                                     <select id="custom-cash" onchange="calculateTotal()" class="w-full bg-black/50 border border-gray-700 text-white rounded-xl p-4 focus:outline-none focus:border-brand transition">
-                                        <option value="0">Standard ($0)</option>
-                                        <option value="25">$100 Million (+$25)</option>
-                                        <option value="50">$500 Million (+$50)</option>
-                                        <option value="75">$1 Billion (+$75)</option>
+                                        <option value="0">100 Million (Included)</option>
+                                        <option value="25">500 Million (+$25)</option>
+                                        <option value="45">1 Billion (+$45)</option>
                                     </select>
                                 </div>
                                 <div>
                                     <label class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">RP Level</label>
                                     <select id="custom-level" onchange="calculateTotal()" class="w-full bg-black/50 border border-gray-700 text-white rounded-xl p-4 focus:outline-none focus:border-brand transition">
-                                        <option value="0">Standard (Level 1)</option>
-                                        <option value="5">Level 120 (+$5)</option>
-                                        <option value="10">Level 250 (+$10)</option>
-                                        <option value="15">Level 500+ (+$15)</option>
+                                        <option value="0">Level 120 (Included)</option>
+                                        <option value="15">Level 250 (+$15)</option>
+                                        <option value="30">Level 500 (+$30)</option>
                                     </select>
                                 </div>
                                 <div class="md:col-span-2">
@@ -237,23 +294,23 @@
                                 </div>
                             </div>
                             <div>
-                                <label class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-3 mt-4">Extra Unlocks</label>
+                                <label class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-3 mt-4">Premium Add-ons & Insurance</label>
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                     <div class="flex items-center gap-3 bg-black/30 p-4 rounded-xl border border-gray-800 hover:border-gray-500 transition">
-                                        <input type="checkbox" id="custom-unlocks" onchange="calculateTotal()" value="15" class="w-5 h-5 accent-brand cursor-pointer custom-addon">
-                                        <label for="custom-unlocks" class="text-white font-medium cursor-pointer select-none">Max All Unlocks (+$15)</label>
+                                        <input type="checkbox" id="custom-bundle" onchange="calculateTotal()" value="15" class="w-5 h-5 accent-brand cursor-pointer custom-addon">
+                                        <label for="custom-bundle" class="text-white font-medium cursor-pointer select-none">Max All Unlocks Bundle (+$15)<br><span class="text-xs text-gray-500">Unlocks, Tattoos, Armor, Duffles</span></label>
                                     </div>
                                     <div class="flex items-center gap-3 bg-black/30 p-4 rounded-xl border border-gray-800 hover:border-gray-500 transition">
-                                        <input type="checkbox" id="custom-tattoos" onchange="calculateTotal()" value="5" class="w-5 h-5 accent-brand cursor-pointer custom-addon">
-                                        <label for="custom-tattoos" class="text-white font-medium cursor-pointer select-none">Stacked Tattoos (+$5)</label>
+                                        <input type="checkbox" id="custom-fastrun" onchange="calculateTotal()" value="10" class="w-5 h-5 accent-brand cursor-pointer custom-addon">
+                                        <label for="custom-fastrun" class="text-white font-medium cursor-pointer select-none">Fast Run (+$10)</label>
                                     </div>
                                     <div class="flex items-center gap-3 bg-black/30 p-4 rounded-xl border border-gray-800 hover:border-gray-500 transition">
-                                        <input type="checkbox" id="custom-armor" onchange="calculateTotal()" value="5" class="w-5 h-5 accent-brand cursor-pointer custom-addon">
-                                        <label for="custom-armor" class="text-white font-medium cursor-pointer select-none">Colored Armor (+$5)</label>
+                                        <input type="checkbox" id="custom-double" onchange="calculateTotal()" value="20" class="w-5 h-5 accent-brand cursor-pointer custom-addon">
+                                        <label for="custom-double" class="text-white font-medium cursor-pointer select-none">Double Characters (+$20)</label>
                                     </div>
-                                    <div class="flex items-center gap-3 bg-black/30 p-4 rounded-xl border border-gray-800 hover:border-gray-500 transition">
-                                        <input type="checkbox" id="custom-duffle" onchange="calculateTotal()" value="5" class="w-5 h-5 accent-brand cursor-pointer custom-addon">
-                                        <label for="custom-duffle" class="text-white font-medium cursor-pointer select-none">Colored Duffle Bags (+$5)</label>
+                                    <div class="flex items-center gap-3 bg-black/30 p-4 rounded-xl border border-brand/40 bg-brand/5 hover:border-brand transition relative overflow-hidden">
+                                        <input type="checkbox" id="custom-insurance" onchange="calculateTotal()" value="10" class="w-5 h-5 accent-brand cursor-pointer custom-addon z-10">
+                                        <label for="custom-insurance" class="text-white font-bold cursor-pointer select-none z-10">Ban Insurance (+$10)<br><span class="text-xs text-brand/80 font-normal">30-Day Free Replacement</span></label>
                                     </div>
                                 </div>
                             </div>
@@ -265,10 +322,11 @@
                         <div id="selected-platform-display" class="text-brand font-bold text-lg mb-4">Xbox One</div>
 
                         <div class="text-gray-500 font-bold uppercase tracking-widest mb-2 text-sm">Estimated Total</div>
-                        <div id="custom-total" class="text-6xl font-black text-brand mb-8 drop-shadow-[0_0_15px_rgba(0,255,0,0.5)]">$20.00</div>
+                        <div id="custom-total" class="text-6xl font-black text-brand mb-2 drop-shadow-[0_0_15px_rgba(0,255,0,0.5)]">$120.00</div>
+                        <div class="text-gray-400 text-xs mb-8">Delivery Time: 24-48 Hours</div>
                         
                         <button onclick="sendWebhook()" id="webhook-btn" class="w-full block bg-brand hover:bg-green-400 text-black font-bold text-xl py-5 px-6 rounded-xl shadow-glow transition-all hover:scale-105 mb-4">
-                            Send Order Request
+                            Submit Order Request
                         </button>
                         
                         <div id="order-success-box" class="hidden mt-4 p-5 bg-brand/10 border border-brand/30 rounded-xl text-left backdrop-blur-md">
@@ -329,7 +387,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-300">
                     <div><strong class="text-gray-500">Platform:</strong> <span id="result-platform">--</span></div>
                     <div><strong class="text-gray-500">Details:</strong> <span id="result-details">--</span></div>
-                    <div><strong class="text-gray-500">Estimated Delivery:</strong> <span id="result-eta">15-45 Minutes</span></div>
+                    <div><strong class="text-gray-500">Estimated Delivery:</strong> <span id="result-eta">24-48 Hours</span></div>
                     <div><strong class="text-gray-500">Fulfillment Modder:</strong> <span id="result-modder">Assigned</span></div>
                 </div>
             </div>
@@ -347,7 +405,7 @@
                 <div class="bg-black/40 p-6 rounded-2xl border border-gray-800">
                     <h4 class="text-lg font-bold text-white mb-2">What are the VIP Subscriptions for?</h4>
                     <p class="text-gray-400 text-sm leading-relaxed">
-                        The VIP Subscriptions are specifically for access to our automated **Xbox Follower Bot**. Subscribing unlocks Discord commands that let you boost followers on Xbox accounts instantly. It is separate from custom modded account purchases.
+                        The VIP Subscriptions are specifically for access to our automated **Xbox Follower Bot**. Subscribing unlocks Discord commands that let you boost followers on Xbox accounts instantly. It is completely separate from custom modded account purchases.
                     </p>
                 </div>
 
@@ -361,14 +419,14 @@
                 <div class="bg-black/40 p-6 rounded-2xl border border-gray-800">
                     <h4 class="text-lg font-bold text-white mb-2">How long does custom account delivery take?</h4>
                     <p class="text-gray-400 text-sm leading-relaxed">
-                        Typical fulfillment takes between 15 to 45 minutes after payment is verified. You can check the live progress of your build using the Order Tracker on this site.
+                        Due to the complexity of custom builds, fulfillment takes between **24 to 48 hours** after payment is verified. You can check the live progress of your build using the Order Tracker on this site. (Pre-made accounts are delivered instantly).
                     </p>
                 </div>
 
                 <div class="bg-black/40 p-6 rounded-2xl border border-gray-800">
-                    <h4 class="text-lg font-bold text-white mb-2">Are payments safe and secure?</h4>
+                    <h4 class="text-lg font-bold text-white mb-2">How does Ban Insurance work?</h4>
                     <p class="text-gray-400 text-sm leading-relaxed">
-                        Yes! All transactions are securely processed through Stripe's checkout system with automatic payment notification webhooks. We never store or handle raw credit card information.
+                        If you add the $10 Ban Insurance to your Custom Account order, we guarantee a free replacement account if your account is banned within 30 days of delivery. Just open a ticket in our Discord!
                     </p>
                 </div>
             </div>
@@ -385,7 +443,7 @@
             </div>
             <div class="flex gap-6">
                 <a href="#follower-bot" class="hover:text-brand transition">Follower Bot</a>
-                <a href="#custom-builder" class="hover:text-brand transition">Custom Builds</a>
+                <a href="#custom-packages" class="hover:text-brand transition">Custom Builds</a>
                 <a href="#inventory" class="hover:text-brand transition">Inventory</a>
                 <a href="#faq" class="hover:text-brand transition">FAQ</a>
             </div>
@@ -481,9 +539,45 @@
             }
         }
 
-        // 3. Custom Account Price Calculator
+        // 3. Select Package (Auto-Fill Custom Builder)
+        function selectPackage(tier) {
+            // Scroll to the builder panel whether it's hidden or not
+            document.getElementById('custom-builder').scrollIntoView({ behavior: 'smooth' });
+            
+            // Set the dropdowns based on the tier
+            if(tier === 1) { // Starter
+                document.getElementById('custom-cash').value = "0"; // 100M
+                document.getElementById('custom-level').value = "0"; // Lvl 120
+                document.getElementById('custom-beff').value = "10"; // 20x Male (Defaults to Male)
+                document.getElementById('custom-bundle').checked = false;
+            } else if (tier === 2) { // Baller
+                document.getElementById('custom-cash').value = "25"; // 500M
+                document.getElementById('custom-level').value = "15"; // Lvl 250
+                document.getElementById('custom-beff').value = "10"; // 20x Male
+                document.getElementById('custom-bundle').checked = true;
+            } else if (tier === 3) { // Ultimate CEO
+                document.getElementById('custom-cash').value = "45"; // 1B
+                document.getElementById('custom-level').value = "30"; // Lvl 500
+                document.getElementById('custom-beff').value = "10"; // 20x Male
+                document.getElementById('custom-bundle').checked = true;
+            }
+
+            // Ensure builder logic recalculates
+            calculateTotal();
+            
+            // Quick UX pulse effect to draw eye to the builder
+            const builderPanel = document.getElementById('custom-builder-panel');
+            if(!builderPanel.classList.contains('hidden')) {
+                builderPanel.classList.add('shadow-[0_0_50px_rgba(0,255,0,0.4)]');
+                setTimeout(() => builderPanel.classList.remove('shadow-[0_0_50px_rgba(0,255,0,0.4)]'), 1000);
+            } else {
+                alert("Please verify your Discord ID below first to use the Account Builder!");
+            }
+        }
+
+        // 4. Custom Account Price Calculator
         function calculateTotal() {
-            const basePrice = 20; 
+            const basePrice = 120; // NEW BASE PRICE
             const cashPrice = parseInt(document.getElementById('custom-cash').value) || 0;
             const levelPrice = parseInt(document.getElementById('custom-level').value) || 0;
             const beffPrice = parseInt(document.getElementById('custom-beff').value) || 0;
@@ -497,7 +591,7 @@
             document.getElementById('custom-total').innerText = '$' + total + '.00';
         }
 
-        // 4. Send Order Webhook to Discord
+        // 5. Send Order Webhook to Discord
         async function sendWebhook() {
             const webhookUrl = "https://discord.com/api/webhooks/1529314249657286739/l4erVSTVIpSghj2yQ_Sw8kNgZKti_Mh09HfsQKA2xlQvWFDn63eEkGe5BkAjN1caBzAr"; 
             
@@ -521,7 +615,7 @@
             
             let extras = [];
             document.querySelectorAll('.custom-addon:checked').forEach((checkbox) => {
-                extras.push("• " + checkbox.nextElementSibling.innerText);
+                extras.push("• " + checkbox.nextElementSibling.innerText.split('(')[0].trim()); // Clean up the label string
             });
             const extrasText = extras.length > 0 ? extras.join('\n') : "None";
             const totalText = document.getElementById('custom-total').innerText;
@@ -537,7 +631,7 @@
                         { name: "GTA Cash", value: cashText, inline: true },
                         { name: "RP Level", value: levelText, inline: true },
                         { name: "20x Beff Outfits", value: beffText, inline: true },
-                        { name: "Extra Features", value: extrasText, inline: false },
+                        { name: "Extra Features & Addons", value: extrasText, inline: false },
                         { name: "Total Estimated Price", value: totalText, inline: false }
                     ],
                     footer: { text: "Use /approve <buyer> <stripe_link> to complete" },
@@ -561,12 +655,12 @@
             } catch (error) {
                 console.error(error);
                 alert("Failed to submit request. Please check connection.");
-                btn.innerText = "Send Order Request";
+                btn.innerText = "Submit Order Request";
                 btn.disabled = false;
             }
         }
 
-        // 5. Order Lookup Logic
+        // 6. Order Lookup Logic
         async function lookupOrder() {
             const query = document.getElementById('lookup-input').value.trim().toLowerCase();
             const resultBox = document.getElementById('lookup-result');
@@ -595,7 +689,7 @@
                     document.getElementById('result-status').innerText = matchedOrder.status || "In Progress";
                     document.getElementById('result-platform').innerText = matchedOrder.platform || "Multi-Platform";
                     document.getElementById('result-details').innerText = matchedOrder.details || "Custom Account Modding";
-                    document.getElementById('result-eta').innerText = matchedOrder.eta || "15-45 Minutes";
+                    document.getElementById('result-eta').innerText = matchedOrder.eta || "24-48 Hours";
                     document.getElementById('result-modder').innerText = matchedOrder.modder || "Staff Assigned";
                     
                     resultBox.classList.remove('hidden');
@@ -609,7 +703,7 @@
             }
         }
 
-        // 6. Pre-Made Inventory Fetch & Search Filter
+        // 7. Pre-Made Inventory Fetch & Search Filter
         async function loadOffers() {
             try {
                 const response = await fetch('./inventory.json');
@@ -668,7 +762,7 @@
             renderInventory(filtered);
         }
 
-        // 7. Modal Handlers
+        // 8. Modal Handlers
         function openModal(index) {
             const offer = globalOffers[index];
             document.getElementById('modal-title').innerText = offer.title;
