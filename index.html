@@ -623,6 +623,10 @@
             const payload = {
                 content: "🔔 **New Custom Account Order Request!**",
                 embeds: [{
+                    author: { 
+                        name: "Polar Follow", 
+                        icon_url: "https://media.discordapp.net/attachments/1525747896509792439/1531113011660587178/green_final_6.png?ex=6a68079c&is=6a66b61c&hm=c489f8eafdae63cf38170f9b0fb17568effd7e058c4b9229572708ae92ac8a9b&=&format=webp&quality=lossless&width=454&height=516" 
+                    },
                     title: "🛠️ Custom Build Request",
                     color: 65280, 
                     description: `**Verified Buyer:** <@${verifiedUserId}> (${verifiedUserId})\n**Stripe Checkout Email:** \`${emailInput}\``,
@@ -634,7 +638,10 @@
                         { name: "Extra Features & Addons", value: extrasText, inline: false },
                         { name: "Total Estimated Price", value: totalText, inline: false }
                     ],
-                    footer: { text: "Use /approve <buyer> <stripe_link> to complete" },
+                    footer: { 
+                        text: "Use /approve <buyer> <stripe_link> to complete",
+                        icon_url: "https://media.discordapp.net/attachments/1525747896509792439/1531113011660587178/green_final_6.png?ex=6a68079c&is=6a66b61c&hm=c489f8eafdae63cf38170f9b0fb17568effd7e058c4b9229572708ae92ac8a9b&=&format=webp&quality=lossless&width=454&height=516"
+                    },
                     timestamp: new Date().toISOString()
                 }]
             };
