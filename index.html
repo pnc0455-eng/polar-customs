@@ -628,10 +628,6 @@
             const payload = {
                 content: "🔔 **New Custom Account Order Request!**",
                 embeds: [{
-                    author: { 
-                        name: "Polar Follow", 
-                        icon_url: "PASTE_YOUR_LOGO_LINK_HERE" 
-                    },
                     title: "🛠️ Custom Build Request",
                     color: 65280, 
                     description: `**Verified Buyer:** <@${verifiedUserId}> (${verifiedUserId})\n**Stripe Checkout Email:** \`${emailInput}\``,
@@ -644,8 +640,7 @@
                         { name: "Total Estimated Price", value: totalText, inline: false }
                     ],
                     footer: { 
-                        text: "Use /approve <buyer> <stripe_link> to complete",
-                        icon_url: "PASTE_YOUR_LOGO_LINK_HERE"
+                        text: "Use /approve <buyer> <stripe_link> to complete"
                     },
                     timestamp: new Date().toISOString()
                 }]
