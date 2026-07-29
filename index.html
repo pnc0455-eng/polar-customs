@@ -341,11 +341,11 @@
         </div>
 
         <!-- PRE-MADE INVENTORY SECTION -->
-        <div id="inventory" class="mb-24 pt-4">
+        <div id="inventory" class="mb-12 pt-4">
             <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 border-b border-white/10 pb-4 gap-4">
                 <div>
                     <span class="text-brand font-bold text-xs uppercase tracking-widest block mb-1">Instant Delivery</span>
-                    <h3 class="text-3xl font-bold text-white">Pre-Made Account Inventory</h3>
+                    <h3 class="text-3xl font-bold text-white">Available Accounts</h3>
                 </div>
                 
                 <div class="flex flex-wrap items-center gap-3">
@@ -364,7 +364,16 @@
                 <p class="text-brand font-medium tracking-wide text-sm uppercase">Syncing Live Inventory...</p>
             </div>
             
-            <div id="offers-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 opacity-0 transition-opacity duration-1000"></div>
+            <div id="offers-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 opacity-0 transition-opacity duration-1000 mb-12"></div>
+            
+            <!-- RECENTLY SOLD ARCHIVE -->
+            <div id="sold-section-container" class="hidden">
+                <div class="flex items-center gap-4 mb-8 border-b border-red-500/20 pb-4 mt-16">
+                    <h3 class="text-2xl font-bold text-gray-400">Recently Sold Archive</h3>
+                    <span class="bg-red-500/10 text-red-400 border border-red-500/20 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">Out of Stock</span>
+                </div>
+                <div id="sold-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+            </div>
         </div>
 
         <!-- ORDER LOOKUP SECTION -->
@@ -541,31 +550,27 @@
 
         // 3. Select Package (Auto-Fill Custom Builder)
         function selectPackage(tier) {
-            // Scroll to the builder panel whether it's hidden or not
             document.getElementById('custom-builder').scrollIntoView({ behavior: 'smooth' });
             
-            // Set the dropdowns based on the tier
-            if(tier === 1) { // Starter
-                document.getElementById('custom-cash').value = "0"; // 100M
-                document.getElementById('custom-level').value = "0"; // Lvl 120
-                document.getElementById('custom-beff').value = "10"; // 20x Male (Defaults to Male)
+            if(tier === 1) { 
+                document.getElementById('custom-cash').value = "0"; 
+                document.getElementById('custom-level').value = "0"; 
+                document.getElementById('custom-beff').value = "10"; 
                 document.getElementById('custom-bundle').checked = false;
-            } else if (tier === 2) { // Baller
-                document.getElementById('custom-cash').value = "25"; // 500M
-                document.getElementById('custom-level').value = "15"; // Lvl 250
-                document.getElementById('custom-beff').value = "10"; // 20x Male
+            } else if (tier === 2) { 
+                document.getElementById('custom-cash').value = "25"; 
+                document.getElementById('custom-level').value = "15"; 
+                document.getElementById('custom-beff').value = "10"; 
                 document.getElementById('custom-bundle').checked = true;
-            } else if (tier === 3) { // Ultimate CEO
-                document.getElementById('custom-cash').value = "45"; // 1B
-                document.getElementById('custom-level').value = "30"; // Lvl 500
-                document.getElementById('custom-beff').value = "10"; // 20x Male
+            } else if (tier === 3) { 
+                document.getElementById('custom-cash').value = "45"; 
+                document.getElementById('custom-level').value = "30"; 
+                document.getElementById('custom-beff').value = "10"; 
                 document.getElementById('custom-bundle').checked = true;
             }
 
-            // Ensure builder logic recalculates
             calculateTotal();
             
-            // Quick UX pulse effect to draw eye to the builder
             const builderPanel = document.getElementById('custom-builder-panel');
             if(!builderPanel.classList.contains('hidden')) {
                 builderPanel.classList.add('shadow-[0_0_50px_rgba(0,255,0,0.4)]');
@@ -577,7 +582,7 @@
 
         // 4. Custom Account Price Calculator
         function calculateTotal() {
-            const basePrice = 120; // NEW BASE PRICE
+            const basePrice = 120; 
             const cashPrice = parseInt(document.getElementById('custom-cash').value) || 0;
             const levelPrice = parseInt(document.getElementById('custom-level').value) || 0;
             const beffPrice = parseInt(document.getElementById('custom-beff').value) || 0;
@@ -615,7 +620,7 @@
             
             let extras = [];
             document.querySelectorAll('.custom-addon:checked').forEach((checkbox) => {
-                extras.push("• " + checkbox.nextElementSibling.innerText.split('(')[0].trim()); // Clean up the label string
+                extras.push("• " + checkbox.nextElementSibling.innerText.split('(')[0].trim()); 
             });
             const extrasText = extras.length > 0 ? extras.join('\n') : "None";
             const totalText = document.getElementById('custom-total').innerText;
@@ -625,7 +630,7 @@
                 embeds: [{
                     author: { 
                         name: "Polar Follow", 
-                        icon_url: "https://media.discordapp.net/attachments/1525747896509792439/1531113011660587178/green_final_6.png?ex=6a68079c&is=6a66b61c&hm=c489f8eafdae63cf38170f9b0fb17568effd7e058c4b9229572708ae92ac8a9b&=&format=webp&quality=lossless&width=454&height=516" 
+                        icon_url: "PASTE_YOUR_LOGO_LINK_HERE" 
                     },
                     title: "🛠️ Custom Build Request",
                     color: 65280, 
@@ -640,7 +645,7 @@
                     ],
                     footer: { 
                         text: "Use /approve <buyer> <stripe_link> to complete",
-                        icon_url: "https://media.discordapp.net/attachments/1525747896509792439/1531113011660587178/green_final_6.png?ex=6a68079c&is=6a66b61c&hm=c489f8eafdae63cf38170f9b0fb17568effd7e058c4b9229572708ae92ac8a9b&=&format=webp&quality=lossless&width=454&height=516"
+                        icon_url: "PASTE_YOUR_LOGO_LINK_HERE"
                     },
                     timestamp: new Date().toISOString()
                 }]
@@ -710,7 +715,7 @@
             }
         }
 
-        // 7. Pre-Made Inventory Fetch & Search Filter
+        // 7. Pre-Made Inventory Fetch, Filter & Split (Active vs Sold)
         async function loadOffers() {
             try {
                 const response = await fetch('./inventory.json');
@@ -725,32 +730,74 @@
         }
 
         function renderInventory(offers) {
-            const grid = document.getElementById('offers-grid');
-            grid.classList.remove('opacity-0');
+            const activeGrid = document.getElementById('offers-grid');
+            const soldGrid = document.getElementById('sold-grid');
+            const soldContainer = document.getElementById('sold-section-container');
+            
+            activeGrid.classList.remove('opacity-0');
+            activeGrid.innerHTML = '';
+            soldGrid.innerHTML = '';
+            
+            let activeCount = 0;
+            let soldCount = 0;
 
-            if (!offers || offers.length === 0) {
-                grid.innerHTML = '<div class="col-span-full py-16 text-center glass-panel rounded-3xl"><p class="text-gray-500 text-lg">No matching accounts found in live inventory.</p></div>';
-                return;
+            offers.forEach((offer, index) => {
+                if (offer.sold === true || offer.sold === "true") {
+                    // RENDER SOLD ITEM
+                    soldCount++;
+                    soldGrid.innerHTML += `
+                        <div class="group relative glass-panel rounded-3xl overflow-hidden border border-red-500/10 grayscale-[50%] opacity-80">
+                            <div class="absolute inset-0 bg-black/40 z-10 pointer-events-none"></div>
+                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 rotate-[-15deg]">
+                                <span class="bg-red-600 text-white font-black text-2xl px-6 py-2 rounded shadow-2xl tracking-widest border-2 border-red-400">SOLD OUT</span>
+                            </div>
+                            <div class="relative h-48 overflow-hidden bg-black">
+                                <img src="${offer.image}" alt="Account Image" class="w-full h-full object-cover">
+                                <span class="absolute top-3 right-3 bg-black/70 backdrop-blur-md text-gray-400 font-bold text-xs px-3 py-1 rounded-full border border-gray-600">${offer.game || 'GTA V'}</span>
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-center justify-between mb-3">
+                                    <span class="px-2.5 py-1 bg-white/5 text-xs font-bold text-gray-500 uppercase tracking-wider rounded border border-white/10">${offer.platform || 'Cross-Platform'}</span>
+                                    <span class="text-gray-500 font-black text-xl line-through">$${offer.price}</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-gray-400 line-clamp-2 leading-tight">${offer.title}</h3>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    // RENDER ACTIVE ITEM
+                    activeCount++;
+                    activeGrid.innerHTML += `
+                        <div class="group relative glass-panel rounded-3xl overflow-hidden hover:border-brand/50 hover:shadow-glow transition-all duration-300 hover:-translate-y-2">
+                            <div class="relative h-48 overflow-hidden bg-black">
+                                <img src="${offer.image}" alt="Account Image" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700">
+                                <span class="absolute top-3 right-3 bg-black/70 backdrop-blur-md text-brand font-bold text-xs px-3 py-1 rounded-full border border-brand/30">${offer.game || 'GTA V'}</span>
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-center justify-between mb-3">
+                                    <span class="px-2.5 py-1 bg-white/5 text-xs font-bold text-gray-300 uppercase tracking-wider rounded border border-white/10">${offer.platform || 'Cross-Platform'}</span>
+                                    <span class="text-brand font-black text-xl drop-shadow-[0_0_10px_rgba(0,255,0,0.3)]">$${offer.price}</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-white mb-6 line-clamp-2 leading-tight">${offer.title}</h3>
+                                <button onclick="openModal(${index})" class="flex items-center justify-center w-full bg-white/5 hover:bg-brand text-white hover:text-black font-bold py-3 px-4 rounded-xl border border-white/10 hover:border-brand transition-all duration-300">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                }
+            });
+
+            if (activeCount === 0) {
+                activeGrid.innerHTML = '<div class="col-span-full py-16 text-center glass-panel rounded-3xl"><p class="text-gray-500 text-lg">No active accounts match your search.</p></div>';
             }
 
-            grid.innerHTML = offers.map((offer, index) => `
-                <div class="group relative glass-panel rounded-3xl overflow-hidden hover:border-brand/50 hover:shadow-glow transition-all duration-300 hover:-translate-y-2">
-                    <div class="relative h-48 overflow-hidden bg-black">
-                        <img src="${offer.image}" alt="Account Image" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700">
-                        <span class="absolute top-3 right-3 bg-black/70 backdrop-blur-md text-brand font-bold text-xs px-3 py-1 rounded-full border border-brand/30">${offer.game || 'GTA V'}</span>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="px-2.5 py-1 bg-white/5 text-xs font-bold text-gray-300 uppercase tracking-wider rounded border border-white/10">${offer.platform || 'Cross-Platform'}</span>
-                            <span class="text-brand font-black text-xl drop-shadow-[0_0_10px_rgba(0,255,0,0.3)]">$${offer.price}</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-white mb-6 line-clamp-2 leading-tight">${offer.title}</h3>
-                        <button onclick="openModal(${index})" class="flex items-center justify-center w-full bg-white/5 hover:bg-brand text-white hover:text-black font-bold py-3 px-4 rounded-xl border border-white/10 hover:border-brand transition-all duration-300">
-                            View Details
-                        </button>
-                    </div>
-                </div>
-            `).join('');
+            // Hide the sold container if there are no sold items yet
+            if (soldCount > 0) {
+                soldContainer.classList.remove('hidden');
+            } else {
+                soldContainer.classList.add('hidden');
+            }
         }
 
         function filterInventory() {
@@ -772,6 +819,8 @@
         // 8. Modal Handlers
         function openModal(index) {
             const offer = globalOffers[index];
+            if (offer.sold) return; // Prevent opening sold items
+            
             document.getElementById('modal-title').innerText = offer.title;
             document.getElementById('modal-price').innerText = '$' + offer.price;
             document.getElementById('modal-image').src = offer.image;
