@@ -329,12 +329,19 @@
                             Submit Order Request
                         </button>
                         
+                        <!-- UPDATED SUCCESS BOX WITH UNIQUE ORDER ID -->
                         <div id="order-success-box" class="hidden mt-4 p-5 bg-brand/10 border border-brand/30 rounded-xl text-left backdrop-blur-md">
                             <p class="text-brand font-bold mb-2 text-lg">✅ Request Sent to Staff!</p>
-                            <p class="text-sm text-gray-300 leading-relaxed">
+                            <p class="text-sm text-gray-300 leading-relaxed mb-4">
                                 Our automated bot will send you a direct message on Discord with your Stripe checkout link once reviewed.
                             </p>
+                            <div class="bg-black/50 p-4 rounded-lg border border-brand/20 text-center">
+                                <p class="text-xs text-gray-500 uppercase tracking-widest mb-1">Your Unique Order ID</p>
+                                <p id="success-order-id" class="text-2xl font-black text-white tracking-widest">POLAR-XXXX</p>
+                            </div>
+                            <p class="text-xs text-gray-500 mt-3 text-center">Save this ID to check your fulfillment status below!</p>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -625,12 +632,15 @@
             const extrasText = extras.length > 0 ? extras.join('\n') : "None";
             const totalText = document.getElementById('custom-total').innerText;
 
+            // 🟢 NEW: Generate a unique random Order ID (e.g., POLAR-8439)
+            const generatedOrderId = "POLAR-" + Math.floor(1000 + Math.random() * 9000);
+
             const payload = {
                 content: "🔔 **New Custom Account Order Request!**",
                 embeds: [{
-                    title: "🛠️ Custom Build Request",
+                    title: `🛠️ Custom Build Request (${generatedOrderId})`,
                     color: 65280, 
-                    description: `**Verified Buyer:** <@${verifiedUserId}> (${verifiedUserId})\n**Stripe Checkout Email:** \`${emailInput}\``,
+                    description: `**Generated Order ID:** \`${generatedOrderId}\`\n**Verified Buyer:** <@${verifiedUserId}> (${verifiedUserId})\n**Stripe Checkout Email:** \`${emailInput}\``,
                     fields: [
                         { name: "Console / Platform", value: `🎮 **${selectedPlatform}**`, inline: true },
                         { name: "GTA Cash", value: cashText, inline: true },
@@ -655,6 +665,8 @@
 
                 if (response.ok) {
                     btn.classList.add('hidden'); 
+                    // 🟢 NEW: Push the Order ID to the Success Box so the buyer sees it!
+                    document.getElementById('success-order-id').innerText = generatedOrderId;
                     document.getElementById('order-success-box').classList.remove('hidden');
                 } else {
                     throw new Error('Discord rejected webhook');
